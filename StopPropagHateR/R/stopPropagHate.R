@@ -26,18 +26,10 @@ stopPropagHate <- function(data_frame, hate_type, language){
             } else {
 
               ## define tokenizer and model based on hate_type and language
-              model_filename <- paste(c("data/models/", hate_type, "_", language, ".h5"), collapse = '')
+              model_filename <- paste(c("./StopPropagHateR/data/models/", hate_type, "_", language, ".h5"), collapse = '')
+              tokenizer_filename <- paste(c("./StopPropagHateR/data/tokenizer_", language), collapse = '')
 
-              print("HELLO")
-              #tokenizer_filename <- paste(c("data/tokenizer_", language, ".h5"), collapse = '')
-              #devtools::install_github("rstudio/reticulate")
-              tokenizer_filename <- "tokenizer_pt"
-
-              ## apply model ##
-              # read model based on hate_type and language
-              reticulate::use_python("/Users/paulafortuna/anaconda3/envs/r-tensorflow/bin/python")
-              mod <- kerasR::keras_load(model_filename)
-
+              #library(keras)
               ## convert texts_vector to word_embeddings ##
               #read tokenizer
               tokenizer <- keras::load_text_tokenizer(tokenizer_filename)
@@ -46,7 +38,10 @@ stopPropagHate <- function(data_frame, hate_type, language){
               sequences <- keras::texts_to_sequences(tokenizer, data_frame$text)
               x_test <- keras::pad_sequences(sequences, maxlen = 100)
 
-
+              #library(kerasR)
+              ## apply model ##
+              # read model based on hate_type and language
+              mod <- kerasR::keras_load(model_filename)
 
               # apply model to the data
               classified_data <- kerasR::keras_predict_proba(mod, x_test)
