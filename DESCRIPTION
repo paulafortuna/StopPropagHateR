@@ -1,0 +1,13 @@
+Package: StopPropagHateR
+Title: Hate Speech classification using Deep Learning to English and Portuguese
+Version: 0.0.0.9000
+Authors@R: person("Paula", "Fortuna", email = "paulatfortuna@gmail.com", role = c("aut", "cre"))
+Description: In this package we provide deep learning models for hate speech classification (binary hate speech, sexism and racism). These were build using keras and allow text classification to Portuguese and English. 
+Depends: R (>= 3.4.4)
+Imports:
+    keras,
+    kerasR
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1.9000
