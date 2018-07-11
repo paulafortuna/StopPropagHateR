@@ -17,8 +17,8 @@ stopPropagHateWithoutPrompt(data_frame, hate_type, language)
 This function allows you to evaluate if a set of text messages constains hate speech.
 }
 \examples{
-texts_data_frame <- data.frame(id = c(1,2,3), text = c("Lugar de mulher e na cozinha, isto e a verdade", "gorda e feia", "mais uma mensagem de teste"))
-stopPropagHateWithoutPrompt(texts_data_frame, "sexism", "pt")
+texts_data_frame <- data.frame(id = c(1,2,3), texts_data_frame <- data.frame(id = c(1,2,3), text = c("Call me sexist but female sports anchors r the worst. Makes me uncomfortable when women know more about sports than I do", "May Allah bless him with 72 virgin pigs.", "Stop sending me anonymous valentines things. I m pretty sure they are")))
+stopPropagHateWithoutPrompt(texts_data_frame, "hate", "en")
 }
 \keyword{hate}
 \keyword{racism,}

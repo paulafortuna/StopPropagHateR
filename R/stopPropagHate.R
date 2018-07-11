@@ -7,8 +7,8 @@
 #' @param language, we provide this funtion both for Enlish "en" and Portuguese "pt".
 #' @keywords hate speech, racism, sexism
 #' @export
-#' @examples texts_data_frame <- data.frame(id = c(1,2,3), text = c("Lugar de mulher e na cozinha, isto e a verdade", "gorda e feia", "mais uma mensagem de teste"))
-#' stopPropagHateWithoutPrompt(texts_data_frame, "sexism", "pt")
+#' @examples texts_data_frame <- data.frame(id = c(1,2,3), texts_data_frame <- data.frame(id = c(1,2,3), text = c("Call me sexist but female sports anchors r the worst. Makes me uncomfortable when women know more about sports than I do", "May Allah bless him with 72 virgin pigs.", "Stop sending me anonymous valentines things. I m pretty sure they are")))
+#' stopPropagHateWithoutPrompt(texts_data_frame, "hate", "en")
 stopPropagHateWithoutPrompt <- function(data_frame, hate_type, language){
   
   # control of inputs
@@ -94,8 +94,8 @@ stopPropagHateWithoutPrompt <- function(data_frame, hate_type, language){
 #' @param language, we provide this funtion both for Enlish "en" and Portuguese "pt".
 #' @keywords hate speech, racism, sexism
 #' @export
-#' @examples texts_data_frame <- data.frame(id = c(1,2,3), text = c("Lugar de mulher e na cozinha, isto e a verdade", "gorda e feia", "mais uma mensagem de teste"))
-#' stopPropagHate(texts_data_frame, "sexism", "pt")
+#' @examples texts_data_frame <- data.frame(id = c(1,2,3), texts_data_frame <- data.frame(id = c(1,2,3), text = c("Call me sexist but female sports anchors r the worst. Makes me uncomfortable when women know more about sports than I do", "May Allah bless him with 72 virgin pigs.", "Stop sending me anonymous valentines things. I m pretty sure they are")))
+#' stopPropagHate(texts_data_frame, "hate", "en")
 stopPropagHate <- function(data_frame, hate_type, language){
   
   if (!file.exists("folder_name.txt")){
