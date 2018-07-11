@@ -24,10 +24,15 @@ stopPropagHate <- function(data_frame, hate_type, language){
             if(length(intersect(language, c("en", "pt", "racism"))) == 0){
               stop("The language is not available. Try with en (English) or pt (Portuguese).")
             } else {
+              
+              #root <- rprojroot::find_root(rprojroot::has_file("DESCRIPTION"))
+              #print(root)
+              #dir(root)
+              print(here::here())
 
               ## define tokenizer and model based on hate_type and language
-              model_filename <- paste(c("./StopPropagHateR/data/models/", hate_type, "_", language, ".h5"), collapse = '')
-              tokenizer_filename <- paste(c("./StopPropagHateR/data/tokenizer_", language), collapse = '')
+              model_filename <- paste(c("data/models/", hate_type, "_", language, ".h5"), collapse = '')
+              tokenizer_filename <- paste(c("data/tokenizers/tokenizer_", language), collapse = '')
 
               #library(keras)
               ## convert texts_vector to word_embeddings ##
