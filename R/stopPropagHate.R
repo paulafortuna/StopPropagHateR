@@ -1,5 +1,5 @@
 
-#' Stop PropagHate function
+#' Stop PropagHateWithoutPromp function
 #'
 #' This function allows you to evaluate if a set of text messages constains hate speech.
 #' @param data_frame, is a data.frame containing a column named "text".
@@ -8,9 +8,9 @@
 #' @keywords hate speech, racism, sexism
 #' @export
 #' @examples texts_data_frame <- data.frame(id = c(1,2,3), text = c("Lugar de mulher e na cozinha, isto e a verdade", "gorda e feia", "mais uma mensagem de teste"))
-#' stopPropagHate(texts_data_frame, "sexism", "pt")
-stopPropagHate <- function(data_frame, hate_type, language){
-
+#' stopPropagHateWithoutPromp(texts_data_frame, "sexism", "pt")
+stopPropagHateWithoutPromp <- function(data_frame, hate_type, language){
+  
   # control of inputs
   try(
     if(length(intersect(colnames(data_frame),"text")) == 0){
@@ -25,36 +25,59 @@ stopPropagHate <- function(data_frame, hate_type, language){
               stop("The language is not available. Try with en (English) or pt (Portuguese).")
             } else {
               
-              #root <- rprojroot::find_root(rprojroot::has_file("DESCRIPTION"))
-              #print(root)
-              #dir(root)
-              print(here::here())
-
-              ## define tokenizer and model based on hate_type and language
-              model_filename <- paste(c("data/models/", hate_type, "_", language, ".h5"), collapse = '')
-              tokenizer_filename <- paste(c("data/tokenizers/tokenizer_", language), collapse = '')
-
-              #library(keras)
-              ## convert texts_vector to word_embeddings ##
-              #read tokenizer
-              tokenizer <- keras::load_text_tokenizer(tokenizer_filename)
-
-              #apply tokenizer to the data
-              sequences <- keras::texts_to_sequences(tokenizer, data_frame$text)
-              x_test <- keras::pad_sequences(sequences, maxlen = 100)
-
-              #library(kerasR)
-              ## apply model ##
-              # read model based on hate_type and language
-              mod <- kerasR::keras_load(model_filename)
-
-              # apply model to the data
-              classified_data <- kerasR::keras_predict_proba(mod, x_test)
-
-              # round data to 0 for no hate or to 1 for hate
-              classified_data <- round(classified_data)
-              # return result
-              return(classified_data)
+              if (!file.exists("folder_name.txt")){
+                
+                #download keras files
+                filepath <- "keras_files.zip"
+                url <- "https://github.com/paulafortuna/hate_speech_deep_learning_models/zipball/master"
+                downloader::download(url, destfile = filepath, mode = "wb")
+                
+                # unzip and get folder name
+                folder_name <- unzip("keras_files.zip")
+                folder_name <- dirname(folder_name[1])
+                
+                #save folder name for posterior usage
+                write(folder_name, file = "folder_name.txt")
+                
+              } 
+              
+              con <- file("folder_name.txt","r")
+              folder_name <- readLines(con,n=1)
+              close(con)
+              
+              try(
+                if(!dir.exists(folder_name)){
+                  stop(paste0("The directory with keras models could not be found. The package can not work. ", folder_name))
+                } else {
+                  
+                  ## define tokenizer and model based on hate_type and language
+                  model_filename <- paste(c(folder_name,"/models/", hate_type, "_", language, ".h5"), collapse = '')
+                  tokenizer_filename <- paste(c(folder_name,"/tokenizers/tokenizer_", language), collapse = '')
+                  
+                  #library(keras)
+                  ## convert texts_vector to word_embeddings ##
+                  #read tokenizer
+                  tokenizer <- keras::load_text_tokenizer(tokenizer_filename)
+                  
+                  #apply tokenizer to the data
+                  sequences <- keras::texts_to_sequences(tokenizer, data_frame$text)
+                  x_test <- keras::pad_sequences(sequences, maxlen = 100)
+                  
+                  #library(kerasR)
+                  ## apply model ##
+                  # read model based on hate_type and language
+                  mod <- kerasR::keras_load(model_filename)
+                  
+                  # apply model to the data
+                  classified_data <- kerasR::keras_predict_proba(mod, x_test)
+                  
+                  # round data to 0 for no hate or to 1 for hate
+                  classified_data <- round(classified_data)
+                  # return result
+                  return(classified_data)
+                  
+                }
+                )
             }
           )
         }

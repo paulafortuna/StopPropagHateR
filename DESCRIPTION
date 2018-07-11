@@ -5,6 +5,7 @@ Authors@R: person("Paula", "Fortuna", email = "paulatfortuna@gmail.com", role = 
 Description: In this package we provide deep learning models for hate speech classification (binary hate speech, sexism and racism). These were build using keras and allow text classification to Portuguese and English. 
 Depends: R (>= 3.4.4)
 Imports:
+    downloader,
     keras,
     kerasR
 License: What license is it under?
