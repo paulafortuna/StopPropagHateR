@@ -6,7 +6,7 @@ The usage of the function stopPropagHate requires the download of tokenizer and 
 
 To install the package:
 
-library("devtools")
+library(devtools)
 
 devtools::install_github("paulafortuna/StopPropagHateR")
 
