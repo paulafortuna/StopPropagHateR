@@ -86,3 +86,28 @@ stopPropagHateWithoutPrompt <- function(data_frame, hate_type, language){
   )
 }
 
+#' Stop PropagHate function
+#'
+#' This function allows you to evaluate if a set of text messages constains hate speech. The usage of the function stopPropagHate requires the download of tokenizer and model files to the working directory. For an automatic download and usage without prompt check the function stopPropagHateWithoutPrompt.
+#' @param data_frame, is a data.frame containing a column named "text".
+#' @param hate_type, is the type of hate you want to measure. It can be general "hate" speech, "sexism" or "racism".
+#' @param language, we provide this funtion both for Enlish "en" and Portuguese "pt".
+#' @keywords hate speech, racism, sexism
+#' @export
+#' @examples texts_data_frame <- data.frame(id = c(1,2,3), text = c("Lugar de mulher e na cozinha, isto e a verdade", "gorda e feia", "mais uma mensagem de teste"))
+#' stopPropagHate(texts_data_frame, "sexism", "pt")
+stopPropagHate <- function(data_frame, hate_type, language){
+  
+  if (!file.exists("folder_name.txt")){
+    answer <- menu(c("Yes", "No"), title="The usage of the function stopPropagHate requires the download of tokenizer and model files to your working directory. Can we proceed with this? (for an automatic download and usage without prompt check the function stopPropagHateWithoutPrompt.)")
+    if(answer == 1){
+      stopPropagHateWithoutPrompt(data_frame, hate_type, language)
+    }
+  
+  } else{
+    stopPropagHateWithoutPrompt(data_frame, hate_type, language)
+  }
+  
+  
+}
+
