@@ -10,6 +10,8 @@ library(devtools)
 
 devtools::install_github("paulafortuna/StopPropagHateR")
 
+Apart from these commands proper installation of keras and tensorflow and python is needed.
+
 
 
 
