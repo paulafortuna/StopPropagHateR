@@ -1,5 +1,5 @@
 
-#' Stop PropagHateWithoutPromp function
+#' Stop PropagHateWithoutPrompt function
 #'
 #' This function allows you to evaluate if a set of text messages constains hate speech.
 #' @param data_frame, is a data.frame containing a column named "text".
@@ -8,8 +8,8 @@
 #' @keywords hate speech, racism, sexism
 #' @export
 #' @examples texts_data_frame <- data.frame(id = c(1,2,3), text = c("Lugar de mulher e na cozinha, isto e a verdade", "gorda e feia", "mais uma mensagem de teste"))
-#' stopPropagHateWithoutPromp(texts_data_frame, "sexism", "pt")
-stopPropagHateWithoutPromp <- function(data_frame, hate_type, language){
+#' stopPropagHateWithoutPrompt(texts_data_frame, "sexism", "pt")
+stopPropagHateWithoutPrompt <- function(data_frame, hate_type, language){
   
   # control of inputs
   try(
