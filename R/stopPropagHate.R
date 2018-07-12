@@ -107,7 +107,21 @@ stopPropagHate <- function(data_frame, hate_type, language){
   } else{
     stopPropagHateWithoutPrompt(data_frame, hate_type, language)
   }
-  
-  
 }
+
+#' Stop PropagHate function
+#'
+#' This function allows you to evaluate if a set of text messages constains hate speech. The usage of the function stopPropagHate requires the download of tokenizer and model files to the working directory. For an automatic download and usage without prompt check the function stopPropagHateWithoutPrompt.
+#' @param message, is a string with the text to be classified.
+#' @param hate_type, is the type of hate you want to measure. It can be general "hate" speech, "sexism" or "racism".
+#' @param language, we provide this funtion both for Enlish "en" and Portuguese "pt".
+#' @keywords hate speech, racism, sexism
+#' @export
+#' @examples message <- "Call me sexist but female sports anchors r the worst. Makes me uncomfortable when women know more about sports than I do", "May Allah bless him with 72 virgin pigs."
+#' stopPropagHateMessage(message, "hate", "en")
+stopPropagHateMessage <- function(message, hate, language){
+  texts <- data.frame(id = c(1, 2), text = c(message, ""))
+  return(stopPropagHateWithoutPrompt(texts, hate,  language)[1])
+}
+
 
