@@ -11,8 +11,14 @@ library(devtools)
 devtools::install_github("paulafortuna/StopPropagHateR")
 
 Apart from these commands proper installation of keras and tensorflow and python is needed.
+Namely, for mac OS, the followed command were:
 
+install.packages("keras")
+install_keras()
 
+devtools::install_github("paulafortuna/StopPropagHateR")
 
+library(StopPropagHateR)
 
-
+Additional configuration of python, conda, and tensorflow may be needed.
+Also the library(reticulate) is being used to solve some problems related with keras.
