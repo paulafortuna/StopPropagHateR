@@ -14,6 +14,7 @@ Apart from these commands proper installation of keras and tensorflow and python
 Namely, for mac OS, the followed command were:
 
 install.packages("keras")
+
 install_keras()
 
 devtools::install_github("paulafortuna/StopPropagHateR")
