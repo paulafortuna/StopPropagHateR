@@ -3,3 +3,4 @@
 export(stopPropagHate)
 export(stopPropagHateMessage)
 export(stopPropagHateWithoutPrompt)
+export(test_package)

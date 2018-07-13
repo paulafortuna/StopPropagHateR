@@ -124,4 +124,13 @@ stopPropagHateMessage <- function(message, hate, language){
   return(stopPropagHateWithoutPrompt(texts, hate,  language)[1])
 }
 
-
+#' test_package function
+#'
+#' This function allows you to evaluate if a set of text messages constains hate speech. The usage of the function stopPropagHate requires the download of tokenizer and model files to the working directory. For an automatic download and usage without prompt check the function stopPropagHateWithoutPrompt.
+#' @keywords hate speech, racism, sexism
+#' @export
+#' @examples test_package()
+test_package <- function(){
+  message <- "Call me sexist but female sports anchors r the worst. Makes me uncomfortable when women know more about sports than I do"
+  return(stopPropagHateMessage(message, "hate", "en")[1])
+}
