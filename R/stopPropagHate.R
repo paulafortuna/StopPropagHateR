@@ -131,6 +131,6 @@ stopPropagHateMessage <- function(message, hate, language){
 #' @export
 #' @examples test_package()
 test_package <- function(){
-  message <- "Call me sexist but female sports anchors r the worst. Makes me uncomfortable when women know more about sports than I do"
-  return(stopPropagHateMessage(message, "hate", "en")[1])
+  message_var <- "Call me sexist but female sports anchors r the worst. Makes me uncomfortable when women know more about sports than I do"
+  return(stopPropagHateMessage(message_var, "hate", "en")[1])
 }

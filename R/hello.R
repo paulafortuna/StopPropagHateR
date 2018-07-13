@@ -9,6 +9,7 @@ hello <- function(myname = ""){
     stop("Tell me your name!")
   }
   list(
-    message = paste("hello", myname, "! This is", R.Version()$version.string)
+    test_package()
+    #message = paste("hello", myname, "! This is", R.Version()$version.string)
   )
 }
