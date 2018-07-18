@@ -4,14 +4,14 @@
 \alias{stopPropagHateMessage}
 \title{Stop PropagHate function}
 \usage{
-stopPropagHateMessage(message, hate, language)
+stopPropagHateMessage(message, hate_type = "hate", language = "en")
 }
 \arguments{
 \item{message, }{is a string with the text to be classified.}
 
-\item{language, }{we provide this funtion both for Enlish "en" and Portuguese "pt".}
-
 \item{hate_type, }{is the type of hate you want to measure. It can be general "hate" speech, "sexism" or "racism".}
+
+\item{language, }{we provide this funtion both for Enlish "en" and Portuguese "pt".}
 }
 \description{
 This function allows you to evaluate if a set of text messages constains hate speech. The usage of the function stopPropagHate requires the download of tokenizer and model files to the working directory. For an automatic download and usage without prompt check the function stopPropagHateWithoutPrompt.

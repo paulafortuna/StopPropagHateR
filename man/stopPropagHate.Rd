@@ -4,7 +4,7 @@
 \alias{stopPropagHate}
 \title{Stop PropagHate function}
 \usage{
-stopPropagHate(data_frame, hate_type, language)
+stopPropagHate(data_frame, hate_type = "hate", language = "en")
 }
 \arguments{
 \item{data_frame, }{is a data.frame containing a column named "text".}

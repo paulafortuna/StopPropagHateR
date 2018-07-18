@@ -9,7 +9,7 @@
 #' @export
 #' @examples texts_data_frame <- data.frame(id = c(1,2,3), texts_data_frame <- data.frame(id = c(1,2,3), text = c("Call me sexist but female sports anchors r the worst. Makes me uncomfortable when women know more about sports than I do", "May Allah bless him with 72 virgin pigs.", "Stop sending me anonymous valentines things. I m pretty sure they are")))
 #' stopPropagHateWithoutPrompt(texts_data_frame, "hate", "en")
-stopPropagHateWithoutPrompt <- function(data_frame, hate_type, language){
+stopPropagHateWithoutPrompt <- function(data_frame, hate_type = "hate", language = "en"){
   
   # control of inputs
   try(
@@ -96,7 +96,7 @@ stopPropagHateWithoutPrompt <- function(data_frame, hate_type, language){
 #' @export
 #' @examples texts_data_frame <- data.frame(id = c(1,2,3), texts_data_frame <- data.frame(id = c(1,2,3), text = c("Call me sexist but female sports anchors r the worst. Makes me uncomfortable when women know more about sports than I do", "May Allah bless him with 72 virgin pigs.", "Stop sending me anonymous valentines things. I m pretty sure they are")))
 #' stopPropagHate(texts_data_frame, "hate", "en")
-stopPropagHate <- function(data_frame, hate_type, language){
+stopPropagHate <- function(data_frame, hate_type = "hate", language = "en"){
   
   if (!file.exists("folder_name.txt")){
     answer <- menu(c("Yes", "No"), title="The usage of the function stopPropagHate requires the download of tokenizer and model files to your working directory. Can we proceed with this? (for an automatic download and usage without prompt check the function stopPropagHateWithoutPrompt.)")
@@ -119,9 +119,9 @@ stopPropagHate <- function(data_frame, hate_type, language){
 #' @export
 #' @examples message <- "Call me sexist but female sports anchors r the worst. Makes me uncomfortable when women know more about sports than I do", "May Allah bless him with 72 virgin pigs."
 #' stopPropagHateMessage(message, "hate", "en")
-stopPropagHateMessage <- function(message, hate, language){
+stopPropagHateMessage <- function(message, hate_type = "hate", language = "en"){
   texts <- data.frame(id = c(1, 2), text = c(message, ""))
-  return(stopPropagHateWithoutPrompt(texts, hate,  language)[1])
+  return(stopPropagHateWithoutPrompt(texts, hate_type,  language)[1])
 }
 
 #' test_package function
